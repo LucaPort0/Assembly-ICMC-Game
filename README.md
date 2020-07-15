@@ -16,5 +16,5 @@ was developed to help students with low level programming
   You can code other applications with that sublime version and run 
 
 ## Autors
-Luca Porto
-Leonardo Meireles
+ - Luca Porto
+ - Leonardo Meireles
