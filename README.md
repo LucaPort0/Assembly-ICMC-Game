@@ -11,7 +11,7 @@ was developed to help students with low level programming
  - Make sure that 'charmap.mif' is also in the "Simulador" folder
  - Use sublime_text.exe inside the 'Sublime text 3' folder to open alienFinal.asm
  - Choose the 'Assembly ICMC' option 
- - Press F7 to run, and then, probably you will have to press 'Home'
+ - Press F7 to run, and then you will probably have to press 'Home'
 
   You can code other applications with that sublime version and run 
 
