@@ -1,6 +1,3 @@
-; Luca Porto 
-; Leonardo Meireles
-
 jmp main
 Win: string "V O C E   C H E G O U"
 Dead: string "V O C E   M O R R E U"
@@ -15,21 +12,22 @@ posAlien: var #1		; Contem a posicao atual do Alien
 posAntAlien: var #1		; Contem a posicao anterior do Alien
 dirAlien: var #1
 
-posAlien2: var #1		; Contem a posicao atual do Alien2
-posAntAlien2: var #1	; Contem a posicao anterior do Alien2
+posAlien2: var #1		; Contem a posicao atual do Alien
+posAntAlien2: var #1	; Contem a posicao anterior do Alien
 dirAlien2: var #1
 
-posAlien3: var #1		; Contem a posicao atual do Alien3
-posAntAlien3: var #1	; Contem a posicao anterior do Alien3
+posAlien3: var #1		; Contem a posicao atual do Alien
+posAntAlien3: var #1	; Contem a posicao anterior do Alien
 dirAlien3: var #1
 
-posAlien4: var #1		; Contem a posicao atual do Alien4
-posAntAlien4: var #1	; Contem a posicao anterior do Alien4
+posAlien4: var #1		; Contem a posicao atual do Alien
+posAntAlien4: var #1	; Contem a posicao anterior do Alien
 dirAlien4: var #1
 
-posAlien5: var #1		; Contem a posicao atual do Alien5
-posAntAlien5: var #1	; Contem a posicao anterior do Alien5
+posAlien5: var #1		; Contem a posicao atual do Alien
+posAntAlien5: var #1	; Contem a posicao anterior do Alien
 dirAlien5: var #1
+
 
 ;Codigo principal
 main:
@@ -1018,28 +1016,43 @@ ChecaPos:
 	jeq ColisaoNave
 	
 	load r1, posAlien2
-	cmp r0, r1			; if posNave == posAlien2  BOOM!!
+	cmp r0, r1			; if posNave == posAlien  BOOM!!
 	jeq ColisaoNave
 	
 	load r1, posAlien3
-	cmp r0, r1			; if posNave == posAlien3  BOOM!!
+	cmp r0, r1			; if posNave == posAlien  BOOM!!
 	jeq ColisaoNave
 	
 	load r1, posAlien4
-	cmp r0, r1			; if posNave == posAlien4  BOOM!!
+	cmp r0, r1			; if posNave == posAlien  BOOM!!
 	jeq ColisaoNave
 	
 	load r1, posAlien5
-	cmp r0, r1			; if posTiro == posAlien5  BOOM!!
+	cmp r0, r1			; if posTiro == posAlien  BOOM!!
 	jeq ColisaoNave
-
+	
+	call ChecaParede
 	
 	loadn r1, #1199
 	cmp r0, r1
 	jeq Vitoria 
 	jmp FimChecagem
 	
+ChecaParede:
+	; --> r2 = Tela1Linha0 + posAnt + posAnt/40  
+	; tem que somar posAnt/40 no ponteiro pois as linas da string terminam com /0 !!
 
+	loadn r1, #tela4Linha0	; Endereco onde comeca a primeira linha do cenario!!
+	add r2, r1, r0			; r2 = Tela1Linha0 + posAnt
+	loadn r4, #40
+	div r3, r0, r4			; r3 = posAnt/40
+	add r2, r2, r3			; r2 = Tela1Linha0 + posAnt + posAnt/40
+	
+	loadi r5, r2			; r5 = Char (Tela(posAnt))
+	loadn r4, #'*'
+	cmp r5, r4 			; if(r5 == '*') BOOM
+	jeq ColisaoNave
+	rts
 
 Vitoria:
 	; Limpa a Tela !!
