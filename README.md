@@ -4,8 +4,8 @@ was developed to help students with low level programming
 
 ## Prerequesites
  - Simulator developed by:
-  >> Breno Cunha Queiroz https://github.com/Brenocq
-  >> Maria Eduarda Kawakami Moreira https://github.com/madukm
+  >> - Breno Cunha Queiroz https://github.com/Brenocq
+  >> - Maria Eduarda Kawakami Moreira https://github.com/madukm
   
 ## How to run
  - Install openGL:
