@@ -2,18 +2,20 @@
 An assembly game aplication for the Computer Organization Course. This Assembly version 
 was developed to help students with low level programming 
 
-## Prerequesites 
-  Sublime with the simulator
+## Prerequesites
+ - Simulator developed by:
+  >> Breno Cunha Queiroz https://github.com/Brenocq
+  >> Maria Eduarda Kawakami Moreira https://github.com/madukm
   
 ## How to run
- - Download the zip 'Simulador' file
- - alienFinal is in the 'Simulador' folder
- - Make sure that 'charmap.mif' is also in the "Simulador" folder
- - Use sublime_text.exe inside the 'Sublime text 3' folder to open alienFinal.asm
- - Choose the 'Assembly ICMC' option 
- - Press F7 to run, and then you will probably have to press 'Home'
+ - Install openGL:
+ >> - sudo apt-get install -y libglfw3-dev
+ >> - sudo apt-get install -y libglew-dev
+ >> - sudo apt-get install -y libncurses5-dev libncursesw5-dev
 
-  You can code other applications with that sublime version and run 
+ - Acess the simulator directory through terminal
+ - Make run to compile and run
+ - Use WASD to move and get to the other side of the phase
 
 ## Autors
  - Luca Porto
