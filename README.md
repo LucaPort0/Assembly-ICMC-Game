@@ -16,6 +16,7 @@ was developed to help students with low level programming
  - Acess the simulator directory through terminal
  - Make run to compile and run
  - Use WASD to move and get to the other side of the phase
+ - The file 'CPURAM.mif' is the same as 'alienFinal.mif'
 
 ## Autors
  - Luca Porto
