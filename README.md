@@ -27,5 +27,5 @@ was developed to help students with low level programming
  >> https://github.com/simoesusp/Processador-ICMC/blob/master/Install_Packages/Simulador_Windows_Tudo_Pronto_F%C3%A1cil%20(1).zip
  
 ## Authors
- - Luca Porto
+ - Luca Porto: https://github.com/LucaPort0
  - Leonardo Meireles: https://github.com/leoMurtha
