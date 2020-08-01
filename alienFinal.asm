@@ -1,7 +1,7 @@
 jmp main
-Win: string "V O C E   C H E G O U"
-Dead: string "V O C E   M O R R E U"
-Msg: string "Quer jogar novamente? <s/n>"
+Win: string "VOCE VENCEU"
+Dead: string "VOCE MORREU"
+Msg: string "Jogar novamente? (s/n)"
 
 Letra: var #1			; Contem a letra que foi digitada
 
@@ -28,7 +28,6 @@ posAlien5: var #1		; Contem a posicao atual do Alien
 posAntAlien5: var #1	; Contem a posicao anterior do Alien
 dirAlien5: var #1
 
-
 ;Codigo principal
 main:
 	call ApagaTela
@@ -49,39 +48,39 @@ main:
 	call ImprimeTela2   		;  rotina de Impresao de Cenario na Tela Inteira
 
 	Loadn r0, #0			
-	store posNave, r0		; Zera Posicao Atual da Nave (dentro do GO)
-	store posAntNave, r0	; Zera Posicao Anterior da Nave
+	store posNave, r0		; Seta Posicao Atual da Nave (dentro do GO)
+	store posAntNave, r0	; Seta Posicao Anterior da Nave
 	
 	Loadn r0, #48			; Alien de cima
-	store posAlien, r0		; Zera Posicao Atual do Alien
-	store posAntAlien, r0	; Zera Posicao Anterior do Alien
+	store posAlien, r0		; Seta Posicao Atual do Alien
+	store posAntAlien, r0	; Seta Posicao Anterior do Alien
 	loadn r0, #1
 	store dirAlien, r0		; Alien começa indo pra baixo
 	
 	Loadn r0, #842			; Alien da esquerda
-	store posAlien2, r0		; Zera Posicao Atual do Alien
-	store posAntAlien2, r0	; Zera Posicao Anterior do Alien
+	store posAlien2, r0		; Seta Posicao Atual do Alien
+	store posAntAlien2, r0	; Seta Posicao Anterior do Alien
 	loadn r0, #2
 	store dirAlien2, r0		; Alien começa indo pra direita
 	
 	Loadn r0, #1151			; Alien de baixo
-	store posAlien3, r0		; Zera Posicao Atual do Alien
-	store posAntAlien3, r0	; Zera Posicao Anterior do Alien
+	store posAlien3, r0		; Seta Posicao Atual do Alien
+	store posAntAlien3, r0	; Seta Posicao Anterior do Alien
 	loadn r0, #3
 	store dirAlien3, r0		; Alien começa indo pra cima
 	
 	Loadn r0, #357			; Alien da direita
-	store posAlien4, r0		; Zera Posicao Atual do Alien
-	store posAntAlien4, r0	; Zera Posicao Anterior do Alien
+	store posAlien4, r0		; Seta Posicao Atual do Alien
+	store posAntAlien4, r0	; Seta Posicao Anterior do Alien
 	loadn r0, #0
 	store dirAlien4, r0		; Alien começa indo pra esquerda
 	
 	Loadn r0, #746			; Alien do meio
-	store posAlien5, r0		; Zera Posicao Atual do Alien
-	store posAntAlien5, r0	; Zera Posicao Anterior do Alien
+	store posAlien5, r0		; Seta Posicao Atual do Alien
+	store posAntAlien5, r0	; Seta Posicao Anterior do Alien
 	loadn r0, #0
 	store dirAlien5, r0		; Alien começa indo pra esquerda
-	
+	 
 	Loadn r0, #0			; Contador para os Mods	= 0
 	loadn r2, #0			; Para verificar se (mod(c/10)==0
 
@@ -92,34 +91,34 @@ main:
 		cmp r1, r2		; if (mod(c/10)==0
 		ceq MoveNave	; Chama rotina de movimentacao da Nave
 	
-		loadn r1, #15
+		loadn r1, #10
 		mod r1, r0, r1
-		cmp r1, r2		; if (mod(c/30)==0
+		cmp r1, r2		; if (mod(c/10)==0
 		ceq MoveAlien	; Chama rotina de movimentacao do Alien 
 		
-		loadn r1, #15
+		loadn r1, #10
 		mod r1, r0, r1
-		cmp r1, r2		; if (mod(c/30)==0
+		cmp r1, r2		; if (mod(c/10)==0
 		ceq MoveAlien2	; Chama rotina de movimentacao do Alien 2
 		
-		loadn r1, #15
+		loadn r1, #10
 		mod r1, r0, r1
-		cmp r1, r2		; if (mod(c/30)==0
+		cmp r1, r2		; if (mod(c/10)==0
 		ceq MoveAlien3	; Chama rotina de movimentacao do Alien 3
 		
-		loadn r1, #15
+		loadn r1, #10
 		mod r1, r0, r1
-		cmp r1, r2		; if (mod(c/30)==0
+		cmp r1, r2		; if (mod(c/10)==0
 		ceq MoveAlien4	; Chama rotina de movimentacao do Alien 4
 		
-		loadn r1, #15
+		loadn r1, #10
 		mod r1, r0, r1
-		cmp r1, r2		; if (mod(c/30)==0
+		cmp r1, r2		; if (mod(c/10)==0
 		ceq MoveAlien5	; Chama rotina de movimentacao do Alien 5
 		
-		loadn r1, #15
+		loadn r1, #10
 		mod r1, r0, r1
-		cmp r1, r2		; if (mod(c/30)==0
+		cmp r1, r2		; if (mod(c/10)==0
 		call ChecaPos	; Chama rotina de verificacao de colisao
 	
 		call Delay
@@ -256,7 +255,7 @@ MoveNave_Desenha:	; Desenha caractere da Nave
 	push r0
 	push r1
 	
-	Loadn r1, #'X'	; Nave
+	Loadn r1, #'$'	; Nave
 	load r0, posNave
 	outchar r1, r0
 	store posAntNave, r0	; Atualiza Posicao Anterior da Nave = Posicao Atual
@@ -265,7 +264,7 @@ MoveNave_Desenha:	; Desenha caractere da Nave
 	pop r0
 	rts
 
-;----------------------------------
+;-----------------------------------
 ;--------------ALIEN----------------
 ;----------------------------------
 
@@ -302,9 +301,6 @@ MoveAlien_Apaga:
 	load r0, posAntAlien	; r0 == posAnt
 	load r1, posAntNave 	; r1 = posAnt
 	cmp r0, r1
-	jne MoveAlien_Apaga_Skip
-		loadn r5, #'X'		; Se o Tiro passa sobre a Nave, apaga com um X, senao apaga com o cenario 
-		jmp MoveAlien_Apaga_Fim
 
 	MoveAlien_Apaga_Skip:	
 	  
@@ -403,7 +399,7 @@ MoveAlien_Apaga:
 		push r0
 		push r1
 		
-		Loadn r1, #'A'	; Alien
+		Loadn r1, #'*'	; Alien
 		load r0, posAlien
 		outchar r1, r0
 		store posAntAlien, r0
@@ -422,7 +418,7 @@ MoveAlien2:
 	
 	call MoveAlien2_recalculaPos
 	
-; So' Apaga e redezenha se (pos != posAnt)
+; So' Apaga e redesenha se (pos != posAnt)
 ;	If (pos != posAnt)	{	
 	load r0, posAlien2
 	load r1, posAntAlien2
@@ -449,9 +445,6 @@ MoveAlien2:
 		load r0, posAntAlien2	; r0 == posAnt
 		load r1, posAntNave		; r1 = posAnt
 		cmp r0, r1
-		jne MoveAlien2_Apaga_Skip
-			loadn r5, #'X'		; Se o Tiro passa sobre a Nave, apaga com um X, senao apaga com o cenario 
-			jmp MoveAlien2_Apaga_Fim
 
 	MoveAlien2_Apaga_Skip:	
 	  
@@ -549,7 +542,7 @@ MoveAlien2:
 		push r0
 		push r1
 		
-		Loadn r1, #'A'	; Alien
+		Loadn r1, #'*'	; Alien
 		load r0, posAlien2
 		outchar r1, r0
 		store posAntAlien2, r0
@@ -595,9 +588,6 @@ MoveAlien3_Apaga:
 	load r0, posAntAlien3	; r0 == posAnt
 	load r1, posAntNave		; r1 = posAnt
 	cmp r0, r1
-	jne MoveAlien3_Apaga_Skip
-		loadn r5, #'X'		; Se o Tiro passa sobre a Nave, apaga com um X, senao apaga com o cenario 
-		jmp MoveAlien3_Apaga_Fim
 
   	MoveAlien3_Apaga_Skip:	
   
@@ -695,7 +685,7 @@ MoveAlien3_Desenha:
 	push r0
 	push r1
 	
-	Loadn r1, #'A'	; Alien
+	Loadn r1, #'*'	; Alien
 	load r0, posAlien3
 	outchar r1, r0
 	store posAntAlien3, r0
@@ -842,7 +832,7 @@ MoveAlien4_Desenha:
 	push r0
 	push r1
 	
-	Loadn r1, #'A'	; Alien
+	Loadn r1, #'*'	; Alien
 	load r0, posAlien4
 	outchar r1, r0
 	store posAntAlien4, r0
@@ -989,7 +979,7 @@ MoveAlien5_Desenha:
 	push r0
 	push r1
 	
-	Loadn r1, #'A'	; Alien
+	Loadn r1, #'*'	; Alien
 	load r0, posAlien5
 	outchar r1, r0
 	store posAntAlien5, r0
@@ -1010,25 +1000,25 @@ ChecaPos:
 	push r4
 	push r5
 	
-	load r0, posNave	; Testa se o Alien pegou a nave
+	load r0, posNave	; Testa se o Alien colidiu com a nave
 	load r1, posAlien
 	cmp r0, r1			; if posNave == posAlien  BOOM!!
 	jeq ColisaoNave
 	
 	load r1, posAlien2
-	cmp r0, r1			; if posNave == posAlien  BOOM!!
+	cmp r0, r1			; if posNave == posAlien   BOOM!!
 	jeq ColisaoNave
 	
 	load r1, posAlien3
-	cmp r0, r1			; if posNave == posAlien  BOOM!!
+	cmp r0, r1			; if posNave == posAlien   BOOM!!
 	jeq ColisaoNave
 	
 	load r1, posAlien4
-	cmp r0, r1			; if posNave == posAlien  BOOM!!
+	cmp r0, r1			; if posNave == posAlien   BOOM!!
 	jeq ColisaoNave
 	
 	load r1, posAlien5
-	cmp r0, r1			; if posTiro == posAlien  BOOM!!
+	cmp r0, r1			; if posNave == posAlien   BOOM!!
 	jeq ColisaoNave
 	
 	call ChecaParede
@@ -1088,7 +1078,7 @@ ColisaoNave:
 	loadn r2, #0  			; cor branca!
 	call ImprimeTela   		; rotina de Impresao de Cenario na Tela Inteira
   
-	;imprime Voce Venceu !!!
+	;imprime Voce Perdeu !!!
 	loadn r0, #528
 	loadn r1, #Dead
 	loadn r2, #0
@@ -1497,7 +1487,7 @@ tela4Linha15 : string "*   ****       **********       ****   *"
 tela4Linha16 : string "*   ****       **********       ****   *"
 tela4Linha17 : string "*   ****       **********       ****   *"
 tela4Linha18 : string "*   ****                        ****   *"
-tela4Linha19 : string "*   ****                        ****   *"
+tela4Linha19 : string "*   ****           **           ****   *"
 tela4Linha20 : string "*          ******************          *"
 tela4Linha21 : string "*          ******************          *"
 tela4Linha22 : string "*          ******************          *"
