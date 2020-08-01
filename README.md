@@ -28,4 +28,4 @@ was developed to help students with low level programming
  
 ## Authors
  - Luca Porto
- - Leonardo Meireles
+ - Leonardo Meireles: https://github.com/leoMurtha
